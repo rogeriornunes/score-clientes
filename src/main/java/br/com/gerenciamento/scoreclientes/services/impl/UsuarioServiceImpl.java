@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.gerenciamento.scoreclientes.entities.Usuario;
-import br.com.gerenciamento.scoreclientes.insfrastructure.UsuarioRepository;
+import br.com.gerenciamento.scoreclientes.insfrastructure.repositories.UsuarioRepository;
 import br.com.gerenciamento.scoreclientes.services.JWTService;
 import br.com.gerenciamento.scoreclientes.services.UsuarioService;
 import br.com.gerenciamento.scoreclientes.utils.exceptions.OperacaoNaoAutorizadaException;

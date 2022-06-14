@@ -1,4 +1,4 @@
-package br.com.gerenciamento.scoreclientes.insfrastructure;
+package br.com.gerenciamento.scoreclientes.insfrastructure.repositories;
 
 import java.util.Optional;
 

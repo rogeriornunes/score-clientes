@@ -11,11 +11,7 @@ import br.com.gerenciamento.scoreclientes.entities.Usuario;
 public class UsuarioConvert {
 
 	@Autowired
-	private  ModelMapper modelMapper;
-	
-//	public UsuarioConvert(ModelMapper modelMapper) {
-//		this.modelMapper = modelMapper;
-//	}
+	private ModelMapper modelMapper;
 	
 	public UsuarioDTO convertToDto(Usuario usuario) {
 		UsuarioDTO usuarioDTO = modelMapper.map(usuario, UsuarioDTO.class);
