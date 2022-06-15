@@ -1,9 +1,8 @@
 package br.com.gerenciamento.scoreclientes.entities;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -13,12 +12,24 @@ import lombok.Data;
 @Table(name = "SCORE")
 public class Score {
 
+	@Id
 	@Column()
 	private String descricao;
 
 	@Column(name = "INICIAL")
-	private BigDecimal ScoreInicial;
+	private Long scoreInicial;
 
 	@Column(name = "FINAL")
-	private BigDecimal ScoreFinal;
+	private Long scoreFinal;
+	
+	public Score() {
+		super();
+	}
+
+	public Score(String descricao, Long scoreInicial, Long scoreFinal) {
+		this.descricao = descricao;
+		this.scoreInicial = scoreInicial;
+		this.scoreFinal = scoreFinal;
+	}
+	
 }
