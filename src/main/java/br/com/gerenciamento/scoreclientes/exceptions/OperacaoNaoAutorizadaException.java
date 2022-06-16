@@ -1,10 +1,10 @@
-package br.com.gerenciamento.scoreclientes.utils.exceptions;
+package br.com.gerenciamento.scoreclientes.exceptions;
 
-public class CampoInvalidoException extends RuntimeException {
+public class OperacaoNaoAutorizadaException extends RuntimeException {
 	private String titulo;
 	private String detalhes;
 
-	public CampoInvalidoException(String titulo, String detalhes) {
+	public OperacaoNaoAutorizadaException(String titulo, String detalhes) {
 		super();
 		this.detalhes = detalhes;
 		this.titulo = titulo;

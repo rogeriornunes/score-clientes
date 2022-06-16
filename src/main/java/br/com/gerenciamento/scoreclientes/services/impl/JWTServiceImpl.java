@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import br.com.gerenciamento.scoreclientes.application.dto.TokenDTO;
 import br.com.gerenciamento.scoreclientes.entities.Usuario;
+import br.com.gerenciamento.scoreclientes.exceptions.LoginInvalidoException;
 import br.com.gerenciamento.scoreclientes.insfrastructure.filter.FilterTokensJWT;
 import br.com.gerenciamento.scoreclientes.services.JWTService;
 import br.com.gerenciamento.scoreclientes.services.UsuarioService;
-import br.com.gerenciamento.scoreclientes.utils.exceptions.LoginInvalidoException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;

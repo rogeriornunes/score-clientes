@@ -1,10 +1,10 @@
-package br.com.gerenciamento.scoreclientes.utils.exceptions;
+package br.com.gerenciamento.scoreclientes.exceptions;
 
-public class LoginInvalidoException extends RuntimeException {
+public class CampoInvalidoException extends RuntimeException {
 	private String titulo;
 	private String detalhes;
 
-	public LoginInvalidoException(String titulo, String detalhes) {
+	public CampoInvalidoException(String titulo, String detalhes) {
 		super();
 		this.detalhes = detalhes;
 		this.titulo = titulo;

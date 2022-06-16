@@ -1,4 +1,4 @@
-package br.com.gerenciamento.scoreclientes.utils.exceptions;
+package br.com.gerenciamento.scoreclientes.exceptions;
 
 public class ExceptionModel {
 	private int status;

@@ -1,10 +1,10 @@
-package br.com.gerenciamento.scoreclientes.utils.exceptions;
+package br.com.gerenciamento.scoreclientes.exceptions;
 
-public class OperacaoNaoAutorizadaException extends RuntimeException {
+public class LoginInvalidoException extends RuntimeException {
 	private String titulo;
 	private String detalhes;
 
-	public OperacaoNaoAutorizadaException(String titulo, String detalhes) {
+	public LoginInvalidoException(String titulo, String detalhes) {
 		super();
 		this.detalhes = detalhes;
 		this.titulo = titulo;

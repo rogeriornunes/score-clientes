@@ -1,4 +1,4 @@
-package br.com.gerenciamento.scoreclientes.utils.exceptions;
+package br.com.gerenciamento.scoreclientes.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

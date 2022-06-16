@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.gerenciamento.scoreclientes.entities.Usuario;
+import br.com.gerenciamento.scoreclientes.exceptions.OperacaoNaoAutorizadaException;
 import br.com.gerenciamento.scoreclientes.insfrastructure.repositories.UsuarioRepository;
 import br.com.gerenciamento.scoreclientes.services.JWTService;
 import br.com.gerenciamento.scoreclientes.services.UsuarioService;
-import br.com.gerenciamento.scoreclientes.utils.exceptions.OperacaoNaoAutorizadaException;
 
 
 @Service
@@ -23,17 +23,17 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public Usuario adicionarUsuario(Usuario usuario) {
-		Usuario uduarioCadastrado = null;
+		Usuario usuarioCadastrado = null;
 		try {
 			Optional<Usuario> optUsuario = usuarioRepository.findByEmail(usuario.getEmail());
 			if (optUsuario.isPresent()) {
 				throw new RuntimeException("Já existe um usuário com o mesmo e-mail cadastrado.");
 			}
-			uduarioCadastrado = usuarioRepository.save(usuario);
+			usuarioCadastrado = usuarioRepository.save(usuario);
 		} catch (Exception e) {
 			throw new RuntimeException("Falha ao salvar novo usuário: " + e.getMessage());
 		}
-		return uduarioCadastrado;
+		return usuarioCadastrado;
 	}
 
 	@Override
