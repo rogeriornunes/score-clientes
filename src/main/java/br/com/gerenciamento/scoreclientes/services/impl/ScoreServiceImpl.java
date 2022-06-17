@@ -1,5 +1,7 @@
 package br.com.gerenciamento.scoreclientes.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +35,31 @@ public class ScoreServiceImpl implements ScoreService {
 		}
 	}
 
+	@Override
+	public List<Score> listaScores() {
+		List<Score> listaScores =  scoreRepository.listaScores();	
+		return  scoreRepository.listaScores();
+	}
+	
+	@Override
+	public String getTipoDescricaoScore(Long score) {
+		String scoreDescricao = null;
+		if (ScoreInicial.INACEITAVEL.getInicioScore() <= score
+						&& ScoreFinal.INSUFICIENTE.getFinalScore() >= score) {
+			return scoreDescricao = ScoreEnum.INSUFICIENTE.getScoreDescricao();
+		} else if (ScoreInicial.INACEITAVEL.getInicioScore() <= score
+						&& ScoreFinal.INACEITAVEL.getFinalScore() >= score) {
+			return scoreDescricao = ScoreEnum.INACEITAVEL.getScoreDescricao();
+		} else if (ScoreInicial.ACEITAVEL.getInicioScore() <= score
+						&& ScoreFinal.ACEITAVEL.getFinalScore() >= score) {
+			return scoreDescricao = ScoreEnum.ACEITAVEL.getScoreDescricao();
+		} else if (ScoreInicial.RECOMENDAVEL.getInicioScore() <= score
+						&& ScoreFinal.RECOMENDAVEL.getFinalScore() >= score) {
+			return scoreDescricao = ScoreEnum.RECOMENDAVEL.getScoreDescricao();
+		}
+		return scoreDescricao;
+	}
+	
 	private boolean validarIntervalo(Score score) {
 		if (ScoreEnum.INSUFICIENTE.getScoreDescricao().equals(score.getDescricao())
 						&& score.getScoreInicial() >= ScoreInicial.INSUFICIENTE.getInicioScore()

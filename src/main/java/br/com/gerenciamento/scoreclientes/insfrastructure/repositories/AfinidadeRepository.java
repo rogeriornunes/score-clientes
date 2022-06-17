@@ -1,5 +1,6 @@
 package br.com.gerenciamento.scoreclientes.insfrastructure.repositories;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,4 +16,6 @@ public interface AfinidadeRepository extends JpaRepository<Afinidade, Object> {
 	@Query(value = "SELECT * FROM AFINIDADE WHERE REGIAO = :regiao AND ESTADO = :estado", nativeQuery = true)
 	Optional<Afinidade> findByRegiaoEstado(@Param("regiao") String regiao, @Param("estado") String estado);
 
+	@Query(value = "SELECT * FROM AFINIDADE WHERE REGIAO = :regiao", nativeQuery = true)
+	 List<Afinidade> listaEstadosPorRegiao(@Param("regiao") String regiao);
 }

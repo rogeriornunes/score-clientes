@@ -1,5 +1,7 @@
 package br.com.gerenciamento.scoreclientes.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +40,10 @@ public class AfinidadeServiceImpl implements AfinidadeService {
 				afinidadeRepository.save(afinidadeCadastrar);
 			}
 		});
+	}
+
+	@Override
+	public List<Afinidade> buscarAfinidadeRegiaoDaPessoa(String regiao) {
+		 return afinidadeRepository.listaEstadosPorRegiao(regiao);
 	}
 }
