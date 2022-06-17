@@ -39,6 +39,14 @@ public class Pessoa {
 	@Column()
 	private String estado;
 	
+	@Column() 
+	private Long score;
+	
 	@Column()
 	private String regiao;
+	
+	public Date adicionarDataInclusao() {
+		this.dataInclusao = new Date();
+		return this.dataInclusao;
+	}
 }
