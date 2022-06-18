@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.gerenciamento.scoreclientes.application.convert.ScoreConvert;
 import br.com.gerenciamento.scoreclientes.application.dto.ScoreDTO;
 import br.com.gerenciamento.scoreclientes.services.ScoreService;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(path = "/v1/api/")
@@ -24,7 +25,7 @@ public class ScoreController {
 	@Autowired
 	private ScoreService scoreService;
 
-	//@ApiOperation(value = "Cadastra um score") 
+	@ApiOperation(value = "Cadastra um score") 
 	@PostMapping(path = "/score")
 	public ResponseEntity<HttpStatus> cadastrarScore(@Valid @RequestBody ScoreDTO scoreDTO) {
 		scoreService.cadastrarScore(scoreConvert.convertToEntity(scoreDTO));

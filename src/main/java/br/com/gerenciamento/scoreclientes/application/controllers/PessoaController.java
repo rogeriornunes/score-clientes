@@ -19,6 +19,7 @@ import br.com.gerenciamento.scoreclientes.application.dto.PessoaRequestDTO;
 import br.com.gerenciamento.scoreclientes.application.dto.PessoaResponseDTO;
 import br.com.gerenciamento.scoreclientes.application.dto.PessoaResponseDetalheDTO;
 import br.com.gerenciamento.scoreclientes.services.PessoaService;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(path = "/v1/api")
@@ -30,15 +31,15 @@ public class PessoaController {
 	@Autowired
 	private PessoaService pessoaService;
 
-	//@ApiOperation(value = "Cadastra uma nova afinidade") 
+	@ApiOperation(value = "Cadastra uma nova pessoa") 
 	@PostMapping(path = "/pessoa")
-	public ResponseEntity<HttpStatus> cadastrarAfinidade(@Valid @RequestBody PessoaRequestDTO pessoaDTO) {
+	public ResponseEntity<HttpStatus> cadastrarPessoa(@Valid @RequestBody PessoaRequestDTO pessoaDTO) {
 		pessoaService.cadastrarPessoa(pessoaConvert.convertToEntity(pessoaDTO));
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	@GetMapping(path = "pessoa/{id}")
-	// @ApiOperation(value = "Busca uma pessoa por ID")
+	 @ApiOperation(value = "Busca uma pessoa por ID")
 	public ResponseEntity<PessoaResponseDTO> buscarPessoaPorID(@PathVariable("id") Integer id) {
 		ResponseEntity<PessoaResponseDTO> response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		PessoaResponseDTO pessoaDTO = pessoaService.buscarPessoaPorID(id);
@@ -48,7 +49,7 @@ public class PessoaController {
 		return response;
 	}
 	
-	//@ApiOperation(value = "Lista todos pessoas") 
+	@ApiOperation(value = "Lista todos pessoas") 
 	@GetMapping(path = "/pessoa")
 	public ResponseEntity<List<PessoaResponseDetalheDTO>> listaClientes() {
 		ResponseEntity<List<PessoaResponseDetalheDTO>> response = new ResponseEntity<>(HttpStatus.NO_CONTENT);

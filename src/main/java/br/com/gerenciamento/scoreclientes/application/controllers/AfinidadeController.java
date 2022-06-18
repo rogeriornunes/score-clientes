@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.gerenciamento.scoreclientes.application.convert.AfinidadeConvert;
 import br.com.gerenciamento.scoreclientes.application.dto.AfinidadeDTO;
 import br.com.gerenciamento.scoreclientes.services.AfinidadeService;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(path = "/v1/api")
@@ -22,7 +23,7 @@ public class AfinidadeController {
 	@Autowired
 	private AfinidadeService afinidadeService;
 
-	//@ApiOperation(value = "Cadastra uma nova afinidade") 
+	@ApiOperation(value = "Cadastra uma nova afinidade") 
 	@PostMapping(path = "/afinidade")
 	public ResponseEntity<HttpStatus> cadastrarAfinidade(@RequestBody AfinidadeDTO afinidadeDTO) {
 		afinidadeService.cadastrarAfinidade(afinidadeConvert.convertToEntity(afinidadeDTO));

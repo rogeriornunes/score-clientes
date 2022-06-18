@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.gerenciamento.scoreclientes.application.convert.UsuarioConvert;
 import br.com.gerenciamento.scoreclientes.application.dto.UsuarioDTO;
 import br.com.gerenciamento.scoreclientes.services.UsuarioService;
+import io.swagger.annotations.ApiOperation;
 import lombok.var;
 
 @RestController
@@ -31,7 +32,7 @@ public class UsuarioController {
 	private UsuarioConvert usuarioConvert;
 
 	@PostMapping("/novo-usuario")
-	// @ApiOperation(value = "Cadastra um novo usuario")
+	@ApiOperation(value = "Cadastra um novo usuario")
 	public ResponseEntity<UsuarioDTO> cadastraUsuario(
 					@Valid @RequestBody UsuarioDTO usuarioDTO) {
 		var usuario = usuarioConvert.convertToEntity(usuarioDTO);
@@ -41,7 +42,7 @@ public class UsuarioController {
 	}
 
 	@PatchMapping(path = "/editar-usuario")
-	//@ApiOperation(value = "Editar um usuario")
+	@ApiOperation(value = "Editar um usuario")
 	public ResponseEntity<UsuarioDTO> editarUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO) {
 		var usuario = usuarioConvert.convertToEntity(usuarioDTO);
 		return new ResponseEntity<UsuarioDTO>(usuarioConvert.convertToDto(usuariosService.editarCliente(usuario)),
@@ -49,6 +50,7 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/auth/buscar-usuario/{email}")
+	@ApiOperation(value = "Busca um usuario por email")
 	public ResponseEntity<UsuarioDTO> buscarUsuario(@PathVariable String email,
 			@RequestHeader("Authorization") String header) {
 		return new ResponseEntity<UsuarioDTO>(usuarioConvert.convertToDto(usuariosService.buscarUsuario(email, header)),
@@ -56,6 +58,7 @@ public class UsuarioController {
 	}
 
 	@DeleteMapping("/auth/remover-usuario/{email}")
+	@ApiOperation(value = "Remover usuario por email")
 	public ResponseEntity<HttpStatus> removeUsuario(@PathVariable String email,
 			@RequestHeader("Authorization") String header) {
 		usuariosService.removerUsuario(email, header);
