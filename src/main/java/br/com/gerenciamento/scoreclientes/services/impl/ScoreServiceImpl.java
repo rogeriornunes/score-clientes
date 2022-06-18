@@ -10,7 +10,6 @@ import br.com.gerenciamento.scoreclientes.enums.ScoreEnum;
 import br.com.gerenciamento.scoreclientes.enums.ScoreFinal;
 import br.com.gerenciamento.scoreclientes.enums.ScoreInicial;
 import br.com.gerenciamento.scoreclientes.insfrastructure.repositories.ScoreRepository;
-import br.com.gerenciamento.scoreclientes.services.JWTService;
 import br.com.gerenciamento.scoreclientes.services.ScoreService;
 
 @Service
@@ -18,9 +17,6 @@ public class ScoreServiceImpl implements ScoreService {
 
 	@Autowired
 	private ScoreRepository scoreRepository;
-
-	@Autowired
-	private JWTService jwtService;
 
 	@Override
 	public void cadastrarScore(Score score) {

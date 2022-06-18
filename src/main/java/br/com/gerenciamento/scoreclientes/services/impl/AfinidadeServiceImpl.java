@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import br.com.gerenciamento.scoreclientes.entities.Afinidade;
 import br.com.gerenciamento.scoreclientes.insfrastructure.repositories.AfinidadeRepository;
 import br.com.gerenciamento.scoreclientes.services.AfinidadeService;
-import br.com.gerenciamento.scoreclientes.services.JWTService;
 
 
 @Service
@@ -16,9 +15,6 @@ public class AfinidadeServiceImpl implements AfinidadeService {
 
 	@Autowired
 	private AfinidadeRepository afinidadeRepository;
-	
-	@Autowired
-	private JWTService jwtService;
 
 	@Override
 	public void cadastrarAfinidade(Afinidade afinidade) {

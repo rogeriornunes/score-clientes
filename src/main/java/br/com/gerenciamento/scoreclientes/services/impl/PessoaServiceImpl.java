@@ -16,7 +16,6 @@ import br.com.gerenciamento.scoreclientes.entities.Pessoa;
 import br.com.gerenciamento.scoreclientes.entities.Score;
 import br.com.gerenciamento.scoreclientes.insfrastructure.repositories.PessoaRepository;
 import br.com.gerenciamento.scoreclientes.services.AfinidadeService;
-import br.com.gerenciamento.scoreclientes.services.JWTService;
 import br.com.gerenciamento.scoreclientes.services.PessoaService;
 import br.com.gerenciamento.scoreclientes.services.ScoreService;
 
@@ -29,9 +28,6 @@ public class PessoaServiceImpl implements PessoaService {
 	
 	@Autowired
 	private PessoaConvert pessoaConvert;
-		
-	@Autowired
-	private JWTService jwtService;
 	
 	@Autowired
 	private AfinidadeService afinidadeService;
