@@ -1,15 +1,11 @@
 package br.com.gerenciamento.scoreclientes.application.convert;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import br.com.gerenciamento.scoreclientes.application.dto.AfinidadeDTO;
 import br.com.gerenciamento.scoreclientes.entities.Afinidade;
-import br.com.gerenciamento.scoreclientes.entities.Estado;
 
 @Controller
 public class AfinidadeConvert {

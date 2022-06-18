@@ -23,4 +23,10 @@ public class Estado {
 						.collect(Collectors.toList());
 		return lista;
 	}
+
+	@Override
+	public String toString() {
+		return "Estado [estado=" + estado + "]";
+	}
+		
 }

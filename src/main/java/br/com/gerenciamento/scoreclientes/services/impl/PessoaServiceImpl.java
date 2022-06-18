@@ -2,12 +2,14 @@ package br.com.gerenciamento.scoreclientes.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.gerenciamento.scoreclientes.application.convert.PessoaConvert;
 import br.com.gerenciamento.scoreclientes.application.dto.PessoaResponseDTO;
+import br.com.gerenciamento.scoreclientes.application.dto.PessoaResponseDetalheDTO;
 import br.com.gerenciamento.scoreclientes.entities.Afinidade;
 import br.com.gerenciamento.scoreclientes.entities.Estado;
 import br.com.gerenciamento.scoreclientes.entities.Pessoa;
@@ -57,7 +59,7 @@ public class PessoaServiceImpl implements PessoaService {
 			pessoa = optPessoa.get();
 			List<Estado> listaEstados = getAfinidadeRegiao(pessoa.getRegiao());
 			String scoreDescricao = getDescricaoScore(pessoa);
-			pessoaDTO = pessoaConvert.convertResponsToDto(pessoa);
+			pessoaDTO = pessoaConvert.convertResponseToDto(pessoa);
 			pessoaDTO.setEstados(listaEstados);
 			pessoaDTO.setScoreDescricao(scoreDescricao);
 		}
@@ -76,5 +78,17 @@ public class PessoaServiceImpl implements PessoaService {
 		List<Score> listaScore = scoreService.listaScores();
 		boolean isScoreCorreto = listaScore.stream().anyMatch(score -> score.getDescricao().equals(scoreDescricao));
 		return isScoreCorreto == true ? scoreDescricao : "";
+	}
+
+	@Override
+	public List<PessoaResponseDetalheDTO> listaPessoas() {
+		List<Pessoa> listaPessoas = pessoaRepository.findAll();
+		List<PessoaResponseDetalheDTO> listaPessoaDTO = listaPessoas.stream()
+						.map(pessoa -> new PessoaResponseDetalheDTO(pessoa.getNome(),
+										pessoa.getCidade(), pessoa.getEstado(),
+										getDescricaoScore(pessoa),
+										getAfinidadeRegiao(pessoa.getRegiao())))
+						.collect(Collectors.toList());
+		return listaPessoaDTO;
 	}
 }

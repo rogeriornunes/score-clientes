@@ -1,11 +1,15 @@
 package br.com.gerenciamento.scoreclientes.application.convert;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import br.com.gerenciamento.scoreclientes.application.dto.PessoaRequestDTO;
 import br.com.gerenciamento.scoreclientes.application.dto.PessoaResponseDTO;
+import br.com.gerenciamento.scoreclientes.application.dto.PessoaResponseDetalheDTO;
 import br.com.gerenciamento.scoreclientes.entities.Pessoa;
 
 @Controller
@@ -19,8 +23,13 @@ public class PessoaConvert {
 	    return pessoaDTO;
 	}
 	
-	public PessoaResponseDTO convertResponsToDto(Pessoa pessoa) {
+	public PessoaResponseDTO convertResponseToDto(Pessoa pessoa) {
 		PessoaResponseDTO pessoaDTO = modelMapper.map(pessoa, PessoaResponseDTO.class);
+	    return pessoaDTO;
+	}
+	
+	public PessoaResponseDetalheDTO convertResponseDetalhesToDto(Pessoa pessoa) {
+		PessoaResponseDetalheDTO pessoaDTO = modelMapper.map(pessoa, PessoaResponseDetalheDTO.class);
 	    return pessoaDTO;
 	}
 	

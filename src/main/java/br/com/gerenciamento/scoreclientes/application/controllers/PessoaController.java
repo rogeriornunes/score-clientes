@@ -1,5 +1,7 @@
 package br.com.gerenciamento.scoreclientes.application.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.gerenciamento.scoreclientes.application.convert.PessoaConvert;
 import br.com.gerenciamento.scoreclientes.application.dto.PessoaRequestDTO;
 import br.com.gerenciamento.scoreclientes.application.dto.PessoaResponseDTO;
+import br.com.gerenciamento.scoreclientes.application.dto.PessoaResponseDetalheDTO;
 import br.com.gerenciamento.scoreclientes.services.PessoaService;
 
 @RestController
@@ -41,6 +44,18 @@ public class PessoaController {
 		PessoaResponseDTO pessoaDTO = pessoaService.buscarPessoaPorID(id);
 		if (pessoaDTO != null) {
 			response = ResponseEntity.ok(pessoaDTO);
+		}
+		return response;
+	}
+	
+	//@ApiOperation(value = "Lista todos pessoas") 
+	@GetMapping(path = "/pessoa")
+	public ResponseEntity<List<PessoaResponseDetalheDTO>> listaClientes() {
+		ResponseEntity<List<PessoaResponseDetalheDTO>> response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		List<PessoaResponseDetalheDTO> listPessoaDTO = pessoaService.listaPessoas();
+		
+		if (!listPessoaDTO.isEmpty()) {
+			response = ResponseEntity.ok(listPessoaDTO);
 		}
 		return response;
 	}
