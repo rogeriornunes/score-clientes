@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.gerenciamento.scoreclientes.application.convert.UsuarioConvert;
 import br.com.gerenciamento.scoreclientes.application.dto.TokenDTO;
-import br.com.gerenciamento.scoreclientes.application.dto.UsuarioDTO;
+import br.com.gerenciamento.scoreclientes.application.dto.UsuarioLoginDTO;
 import br.com.gerenciamento.scoreclientes.services.JWTService;
 import lombok.var;
 
@@ -27,8 +27,8 @@ public class LoginController {
 	private UsuarioConvert usuarioConvert;
 	
 	@PostMapping("auth/login")
-	public ResponseEntity<TokenDTO> autenticar(@RequestBody UsuarioDTO usuarioDTO) throws ServletException {
-		var usuario = usuarioConvert.convertToEntity(usuarioDTO);
+	public ResponseEntity<TokenDTO> autenticar(@RequestBody UsuarioLoginDTO usuarioLoginDTO) throws ServletException {
+		var usuario = usuarioConvert.convertToEntity(usuarioLoginDTO);
 		return new ResponseEntity<TokenDTO>(jwtService.autenticar(usuario), HttpStatus.OK);
 	}
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,14 +34,16 @@ public class PessoaController {
 
 	@ApiOperation(value = "Cadastra uma nova pessoa") 
 	@PostMapping(path = "/pessoa")
-	public ResponseEntity<HttpStatus> cadastrarPessoa(@Valid @RequestBody PessoaRequestDTO pessoaDTO) {
+	public ResponseEntity<HttpStatus> cadastrarPessoa(@Valid @RequestBody PessoaRequestDTO pessoaDTO, 
+					@RequestHeader("Authorization") String header) {
 		pessoaService.cadastrarPessoa(pessoaConvert.convertToEntity(pessoaDTO));
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	@GetMapping(path = "pessoa/{id}")
 	 @ApiOperation(value = "Busca uma pessoa por ID")
-	public ResponseEntity<PessoaResponseDTO> buscarPessoaPorID(@PathVariable("id") Integer id) {
+	public ResponseEntity<PessoaResponseDTO> buscarPessoaPorID(@Valid @PathVariable("id") Integer id, 
+					@RequestHeader("Authorization") String header) {
 		ResponseEntity<PessoaResponseDTO> response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		PessoaResponseDTO pessoaDTO = pessoaService.buscarPessoaPorID(id);
 		if (pessoaDTO != null) {
@@ -51,7 +54,7 @@ public class PessoaController {
 	
 	@ApiOperation(value = "Lista todos pessoas") 
 	@GetMapping(path = "/pessoa")
-	public ResponseEntity<List<PessoaResponseDetalheDTO>> listaClientes() {
+	public ResponseEntity<List<PessoaResponseDetalheDTO>> listaClientes(@Valid @RequestHeader("Authorization") String header) {
 		ResponseEntity<List<PessoaResponseDetalheDTO>> response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		List<PessoaResponseDetalheDTO> listPessoaDTO = pessoaService.listaPessoas();
 		

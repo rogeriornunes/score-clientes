@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +26,8 @@ public class AfinidadeController {
 
 	@ApiOperation(value = "Cadastra uma nova afinidade") 
 	@PostMapping(path = "/afinidade")
-	public ResponseEntity<HttpStatus> cadastrarAfinidade(@RequestBody AfinidadeDTO afinidadeDTO) {
+	public ResponseEntity<HttpStatus> cadastrarAfinidade(@RequestBody AfinidadeDTO afinidadeDTO, 
+					@RequestHeader("Authorization") String header) {
 		afinidadeService.cadastrarAfinidade(afinidadeConvert.convertToEntity(afinidadeDTO));
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}

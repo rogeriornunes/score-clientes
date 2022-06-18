@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,7 +28,8 @@ public class ScoreController {
 
 	@ApiOperation(value = "Cadastra um score") 
 	@PostMapping(path = "/score")
-	public ResponseEntity<HttpStatus> cadastrarScore(@Valid @RequestBody ScoreDTO scoreDTO) {
+	public ResponseEntity<HttpStatus> cadastrarScore(@Valid @RequestBody ScoreDTO scoreDTO, 
+					@RequestHeader("Authorization") String header) {
 		scoreService.cadastrarScore(scoreConvert.convertToEntity(scoreDTO));
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
