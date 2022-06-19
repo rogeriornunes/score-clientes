@@ -37,7 +37,6 @@ Os endpoints disponíveis estão presentes nele.
 
 ## Testes 
 Há alguns testes nos seguintes package
-`./src/test/java/br/com/gerenciamento/scoreclientes/controllers`. 
 `./src/test/java/br/com/gerenciamento/scoreclientes/repository`.
 `./src/test/java/br/com/gerenciamento/scoreclientes/entity`.
 `./src/test/java/br/com/gerenciamento/scoreclientes/services`.
