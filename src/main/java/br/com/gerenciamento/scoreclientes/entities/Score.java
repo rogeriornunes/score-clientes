@@ -31,5 +31,10 @@ public class Score {
 		this.scoreInicial = scoreInicial;
 		this.scoreFinal = scoreFinal;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Score [descricao=" + descricao + ", scoreInicial=" + scoreInicial + ", scoreFinal="
+						+ scoreFinal + "]";
+	}	
 }

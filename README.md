@@ -21,7 +21,6 @@ Gerenciamento de Cadastro de pessoas e afinidade por região com seus respectivo
 
 * Cadastra um score
 
-
 ## Powered By
 
 * Spring Boot 2.1.1.RELEASE;
@@ -34,3 +33,15 @@ Gerenciamento de Cadastro de pessoas e afinidade por região com seus respectivo
 A API dispõe de acesso ao Swagger para fácil utilização. Após subir o serviço, acesse http://localhost:8080/swagger-ui.html.
 
 Os endpoints disponíveis estão presentes nele.
+
+
+## Testes 
+Há alguns testes nos seguintes package
+`./src/test/java/br/com/gerenciamento/scoreclientes/controllers`. 
+`./src/test/java/br/com/gerenciamento/scoreclientes/repository`.
+`./src/test/java/br/com/gerenciamento/scoreclientes/entity`.
+`./src/test/java/br/com/gerenciamento/scoreclientes/services`.
+Ao executá-los, a aplicação utilizará um segundo banco de dados (o H2 in-memory).
+
+O arquivo ./src/test/resources/application.properties gerencia a conexão dos testes com o H2.
+
